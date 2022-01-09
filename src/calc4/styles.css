@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+
+* {
+  --keyboard-bg: rgb(20, 20, 20);
+  --keyboard-color: rgb(255, 255, 255);
+
+  --display-bg: rgb(20, 20, 20);
+  --display-font-color: white;
+
+  --journal-font-color: gray;
+
+  --circle-cwc-bg: rgb(255, 255, 255, 0.3);
+
+  --key-bg: rgb(20, 20, 20, 0.8);
+  --key-font-size: 1rem;
+  --key-border-radius: 4px;
+  --key-border: 1px solid rgb(0, 0, 0);
+  --key-box-shadow: inset -1px -1px rgb(0, 0, 0),
+    inset 1px 1px rgb(128, 128, 128);
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  font-family: "Roboto", sans-serif;
+}
+
+@keyframes clickBg {
+  0% {
+    transform: scale(0.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
