@@ -17,11 +17,11 @@ export const preLast = (arr: string[]): string => {
 };
 
 export const hasDot = (s: string) => {
-  return s.indexOf(".") === -1 ? false : true;
+  return s.indexOf(",") === -1 ? false : true;
 };
 
 export const lastHasDot = (arr: string[]) => {
-  return last(arr).indexOf(".") === -1 ? false : true;
+  return last(arr).indexOf(",") === -1 ? false : true;
 };
 
 export const hasU = (arr: string[]) => {
@@ -57,22 +57,37 @@ export const addIfNeedCloseScope = (display: string[]) => {
 
 export const resNotAllowed = (display: string[]) => {
   return (
-    hasRes(display) || !hasItem(display) || /[-÷+×(.]$/.test(last(display))
+    hasRes(display) || !hasItem(display) || /[-÷+×(,]$/.test(last(display))
   );
 };
 
 export const prepareStr = (display: string[]) => {
-  return display.join("").replace(/×/g, "*").replace(/÷/g, "/");
+  return display
+    .join("")
+    .replace(/,/g, ".")
+    .replace(/×/g, "*")
+    .replace(/÷/g, "/");
+};
+
+const allZero = (str: string) => {
+  return str.match(/0/g)?.length === str.length;
 };
 
 export const prepareRes = (res: string) => {
-  return res.replace(/\*/g, "×").replace(/\//g, "÷");
+  if (allZero(res)) return "0";
+  return res
+    .replace(/\./g, ",")
+    .replace(/\*/g, "×")
+    .replace(/\//g, "÷")
+    .replace(/^0+(?!,)/, "")
+    .replace(/(?<=,\d*)0+$/, "")
+    .replace(/,$/, ""); //
 };
 
 export const naCloseScope = (display: string[]) => {
   //notAllowedCloseScope
   return (
-    /[-÷+×(.]$/.test(last(display)) ||
+    /[-÷+×(,]$/.test(last(display)) ||
     hasRes(display) ||
     howMatchNeedCloseScope(display) === 0
   );
@@ -80,7 +95,7 @@ export const naCloseScope = (display: string[]) => {
 
 export const naOpenScope = (display: string[]) => {
   //notAllowedOpenScope
-  return /[0-9).]$/.test(last(display)) || hasRes(display);
+  return /[0-9),]$/.test(last(display)) || hasRes(display);
 };
 
 export const push = (display: string[], type: string): string[] => {

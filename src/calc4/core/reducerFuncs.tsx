@@ -54,7 +54,7 @@ export const fS = ({ display, ...state }: State, { type }: Action): State => {
   if (
     !CF.hasItem(display) ||
     CF.last(display) === "(" ||
-    CF.lastL(display) === "."
+    CF.lastL(display) === ","
   ) {
     return { ...state, display };
   }

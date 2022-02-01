@@ -14,7 +14,7 @@ class SC {
   };
 
   static toNumber = (n: string) => {
-    return n.includes(".") ? Number.parseFloat(n) : Number.parseInt(n, 10);
+    return n.includes(".") ? parseFloat(n) : parseInt(n, 10);
   };
 
   static sum = (a: number, b: number): number => a + b;

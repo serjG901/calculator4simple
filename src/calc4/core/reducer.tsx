@@ -24,7 +24,7 @@ export type ActionTypes =
   | "-"
   | "×"
   | "÷"
-  | "."
+  | ","
   | "+/-";
 
 export type Action = { type: ActionTypes };
@@ -81,7 +81,7 @@ export const reducer: Reducer<State, Action> = (
       return RF.fRS(state, action);
     case "(":
       return RF.fLS(state, action);
-    case ".":
+    case ",":
       return RF.fD(state, action);
     case "+/-":
       return RF.fCS(state);

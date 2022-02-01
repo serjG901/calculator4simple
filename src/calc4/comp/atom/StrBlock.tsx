@@ -14,10 +14,6 @@ const styled = (key: string) => {
       return { color: "gray", margin: "0.25rem" };
     case "(":
       return { color: "gray", margin: "0.25rem" };
-    case ".":
-      return { color: "gray", margin: "0.25rem" };
-    case "+/-":
-      return { color: "gray", margin: "0.25rem" };
     case "=":
       return { color: "purple", margin: "0.25rem" };
     default:
@@ -25,8 +21,38 @@ const styled = (key: string) => {
   }
 };
 
+const three = (str: string): string => {
+  const i = str.indexOf(",");
+  if (i !== -1) {
+    const left = str.slice(0, i);
+    const right = str.slice(i);
+    return (
+      left
+        .split("")
+        .reverse()
+        .join("")
+        .replace(/(\d{3})(?!-)/g, "$1 ")
+        .split("")
+        .reverse()
+        .join("") + right
+    );
+  }
+  return str
+    .split("")
+    .reverse()
+    .join("")
+    .replace(/(\d{3})(?!-)/g, "$1 ")
+    .split("")
+    .reverse()
+    .join("");
+};
+
 const StrBlock = ({ children }: TStrBlock) => {
-  return <div style={styled(children)}>{children}</div>;
+  return (
+    <div style={styled(children)}>
+      {children.split(" ").map(three).join(" ")}
+    </div>
+  );
 };
 
 export default StrBlock;

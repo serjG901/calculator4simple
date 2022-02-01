@@ -1,11 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 
-* {
+.main {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  --main-bg: rgb(20, 20, 20);
+
   --keyboard-bg: rgb(20, 20, 20);
   --keyboard-color: rgb(255, 255, 255);
 
   --display-bg: rgb(20, 20, 20);
   --display-font-color: white;
+  --display-border-radius: 4px;
+  --display-border: 1px solid rgb(0, 0, 0);
+  --display-box-shadow: inset -1px -1px rgb(128, 128, 128),
+    inset 1px 1px rgb(0, 0, 0);
 
   --journal-font-color: gray;
 
@@ -25,7 +35,7 @@
 
 @keyframes clickBg {
   0% {
-    transform: scale(0.1);
+    transform: scale(0.2);
   }
   100% {
     transform: scale(1);

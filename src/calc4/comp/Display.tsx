@@ -8,25 +8,25 @@ const styled = {
   flexWrap: "wrap" as "wrap",
   justifyContent: "flex-end",
   alignContent: "flex-end",
-  width: "100%",
-  height: "100%",
+  width: "98%",
+  height: "98%",
   overflow: "hidden",
   padding: "0.5em",
   background: "var(--display-bg)",
   fontSize: "1em",
-  color: "var(--display-font-color)"
+  color: "var(--display-font-color)",
+  border: "var(--display-border)",
+  borderRadius: "var(--display-border-radius)",
+  boxShadow: "var(--display-box-shadow)"
 };
 
 const Display = ({ data, journal }: T) => {
   return (
     <div style={styled}>
-      <Journal data={journal} />
-      <List data={data} />
+      {journal.length ? <Journal data={journal} /> : null}
+      {data.length ? <List data={data} /> : null}
     </div>
   );
 };
 
 export default Display;
-/*willChange: "transform",
-              animation: `result 0.2s ease`
-*/

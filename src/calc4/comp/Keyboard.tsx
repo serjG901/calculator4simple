@@ -1,3 +1,4 @@
+import React from "react";
 import Keybutton from "./molecul/Keybutton";
 import { Action, ActionTypes } from "../core/reducer";
 
@@ -24,7 +25,7 @@ const keys: ActionTypes[] = [
   "+",
   "+/-",
   "0",
-  ".",
+  ",",
   "="
 ];
 
@@ -49,4 +50,4 @@ const Keyboard = ({ dispatch }: TKeyboard) => {
   );
 };
 
-export default Keyboard;
+export default React.memo(Keyboard);
